@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>508614149141-iimr8gmgt6recnm5pclsnvhdq3nsu1no.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.508614149141-iimr8gmgt6recnm5pclsnvhdq3nsu1no</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCsN7UwctntUbD1KhmDDp4I1liDenSpE5g</string>
+	<key>GCM_SENDER_ID</key>
+	<string>508614149141</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.agendaApp</string>
+	<key>PROJECT_ID</key>
+	<string>agendatest-3aed9</string>
+	<key>STORAGE_BUCKET</key>
+	<string>agendatest-3aed9.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:508614149141:ios:a968965192954fb0057a1c</string>
+	<key>DATABASE_URL</key>
+	<string>https://agendatest-3aed9.firebaseio.com</string>
+</dict>
+</plist>
