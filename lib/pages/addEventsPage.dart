@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../services/eventService.dart';
-import 'package:agenda_app/model/event.dart';
 
 class AddEventsPage extends StatefulWidget {
   final DocumentSnapshot data;
@@ -22,10 +21,12 @@ class AddEventsPageState extends State<AddEventsPage> {
   AddEventsPageState({this.data});
   @override
   Widget build(BuildContext context) {
+    // Prevent to crash when data is null
   final element = data != null ? Record.fromSnapshot(data) : null; 
+  // pass data to the form fields with default values
   _titleController.text = element != null? element.title : 'Title';
-  _descriptionController.text = element != null? element.description : 'Description';
   _dateController.text = element != null? element.date : 'Date';
+  _descriptionController.text = element != null? element.description : 'Description';
     final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
                 return Scaffold(
                   appBar: AppBar(
@@ -65,11 +66,12 @@ class AddEventsPageState extends State<AddEventsPage> {
             ),
           )
         ),floatingActionButton: FloatingActionButton(
+          // commuting the button action depending if it's updating an element or a new one needs to be created
       onPressed: () => element != null ?
        this.firebaseService.updateEvent(element.reference, _titleController.text, _dateController.text, _descriptionController.text) : 
        this.firebaseService.createEvent(_titleController.text, _dateController.text, _descriptionController.text)
       .then((_) {
-        print('Event Created!');
+        // go to the previous page
         Navigator.pop(context);
       }), 
       child: Icon(Icons.send),

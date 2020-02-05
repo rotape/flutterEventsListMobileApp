@@ -1,5 +1,3 @@
-import 'package:agenda_app/services/authService.dart';
-
 import '../model/authentication.dart';
 import 'package:flutter/material.dart';
 class SignInPage extends StatefulWidget {
@@ -41,8 +39,8 @@ class SignInPageState extends State<SignInPage> {
           children: <Widget>[
             showEmailInput(),
             showPasswordInput(),
-            showButton(login, 'login'),
-            showButton(register, 'register'),
+            showButton(login, 'Login'),
+            showButton(register, 'Register'),
           ],
         )
         )

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'signInPage.dart';
 import 'listPage.dart';
 
-//this root page it's gonna handle the login stat
+//this root page it's gonna handle the login state
 enum AuthStatus {
   NOT_DETERMINED,
   NOT_LOGGED_IN,
@@ -40,7 +40,6 @@ class RootPageState extends State<RootPage> {
     widget.auth.getCurrentUser().then((user) {
       setState(() {
         authStatus = AuthStatus.LOGGED_IN;
-       // Navigator.push(context, MaterialPageRoute(builder: (context)=> ListPage(user:user.id, auth:auth, logoutCallback:logoutCallback())));
       });
     });
   }

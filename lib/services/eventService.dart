@@ -1,19 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../model/event.dart';
 
+//In this class methods we implement the CRUD actions for the app
 class FirebaseService {
   final CollectionReference eventsCollection =
       Firestore.instance.collection('events');
-  static final FirebaseService _instance = new FirebaseService.internal();
+  static final FirebaseService _instance =  FirebaseService.internal();
 
   factory FirebaseService() => _instance;
 
   FirebaseService.internal();
 
-  Future<Event> createEvent(String title, String description, String date) {
+  Future<Event> createEvent(String title, String date, String description ) {
     final TransactionHandler createTransaction = (Transaction trans) async {
       final DocumentSnapshot ds = await trans.get(eventsCollection.document());
-      final Event event = new Event(title, date, description);
+      final Event event = Event(title, date, description);
       final Map<String, dynamic> data = event.toMap();
 
       await trans.set(ds.reference, data);
@@ -30,11 +31,9 @@ class FirebaseService {
 }
 
 
-  Future <dynamic> updateEvent(DocumentReference id, String title, String description, String date) async {
-      // id.toString();
-      // await Firestore.instance.collection('events').document('$id').updateData({'title':  title, 'description':description, 'date':date });
+  Future <dynamic> updateEvent(DocumentReference id, String title, String date, String description) async {
       final TransactionHandler updateTransaction = (Transaction trans) async {
-      await trans.update(id, {'title':  title, 'description':description, 'date':date });
+      await trans.update(id, {'title':  title, 'date':date, 'description':description  });
     };
     return Firestore.instance
         .runTransaction(updateTransaction)
@@ -78,7 +77,4 @@ class Record {
 
   Record.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data, reference: snapshot.reference);
-
-  @override
-  String toString() { "Record<$title:$date>"; print('$reference'); }
 }
