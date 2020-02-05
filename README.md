@@ -1,6 +1,6 @@
 # agenda_app
 
-A new Flutter project.
+A new Flutter project integrating Firebase. It's a simple events list app, with a login-register page, an events list page, and a last page creating-editing events.
 
 ## Getting Started
 
