@@ -55,13 +55,14 @@ class _ListPageState extends State<ListPage> {
     );
   }
 
+// Here we build the list
   Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
     return ListView(
       padding: const EdgeInsets.only(top: 20.0),
       children: snapshot.map((data) => _buildListItem(context, data)).toList(),
     );
   }
-
+// Each item of the list
   Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
     final record = Record.fromSnapshot(data);
 
@@ -77,7 +78,9 @@ class _ListPageState extends State<ListPage> {
           leading: GestureDetector(
             child: Icon(Icons.edit),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) { return AddEventsPage(record:record,);}));
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => AddEventsPage(data: data),
+              ));
             },
           ),
           title: Text('${record.title} ${record.date}' ),

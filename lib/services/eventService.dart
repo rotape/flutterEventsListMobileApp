@@ -21,7 +21,24 @@ class FirebaseService {
       return data;
     };
 
-    return Firestore.instance.runTransaction(createTransaction).then((mapData) {
+      return Firestore.instance.runTransaction(createTransaction).then((mapData) {
+      return Event.fromMap(mapData);
+    }).catchError((error) {
+      print('error: $error');
+      return null;
+    });
+}
+
+
+  Future <dynamic> updateEvent(DocumentReference id, String title, String description, String date) async {
+      // id.toString();
+      // await Firestore.instance.collection('events').document('$id').updateData({'title':  title, 'description':description, 'date':date });
+      final TransactionHandler updateTransaction = (Transaction trans) async {
+      await trans.update(id, {'title':  title, 'description':description, 'date':date });
+    };
+    return Firestore.instance
+        .runTransaction(updateTransaction)
+        .then((mapData) {
       return Event.fromMap(mapData);
     }).catchError((error) {
       print('error: $error');
@@ -32,17 +49,18 @@ class FirebaseService {
   Future<dynamic> deleteEvent(DocumentReference id) async {
     final TransactionHandler deleteTransaction = (Transaction trans) async {
       await trans.delete(id);
-      // return {'deleted': true};
+       return {'deleted': true};
     };
     return Firestore.instance
         .runTransaction(deleteTransaction)
-        .then((result) => result['deleted'])
-        .catchError((error) {
+        .then((mapData) {
+      return Event.fromMap(mapData);
+    }).catchError((error) {
       print('error: $error');
-      return false;
+      return null;
     });
   }
-}
+}  
 
 class Record {
   final String title;
