@@ -9,21 +9,19 @@ import 'pages/signInPage.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
- @override
- Widget build(BuildContext context) {
-   //to make it straight forward we'll be using material
-  //here we set the main page and the routes
-   return MaterialApp(
-     title: 'Baby Names',
-     home: RootPage(auth: AuthService(),),
-     routes: {
-       '/List': (context) => ListPage(auth: AuthService()),
-       '/AddEvents':(context) => AddEventsPage(),
-       '/Signin':(context) => SignInPage(),
-     }
-   );
- }
+  @override
+  Widget build(BuildContext context) {
+    //to make it straight forward we'll be using material
+    //here we set the main page and the routes
+    return MaterialApp(
+        title: 'Calendar App',
+        home: RootPage(
+          auth: AuthService(),
+        ),
+        routes: {
+          '/List': (context) => ListPage(auth: AuthService()),
+          '/AddEvents': (context) => AddEventsPage(),
+          '/Signin': (context) => SignInPage(),
+        });
+  }
 }
-
-
-
